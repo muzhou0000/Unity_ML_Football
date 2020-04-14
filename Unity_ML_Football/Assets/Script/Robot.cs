@@ -9,9 +9,6 @@ public class Robot : Agent
     [Header("速度"), Range(1, 50)]
     public float speed;
     private Animator ani;
-    private Text textMessage;
-    private int countTotal;
-    private int countComplete;
 
 
     private void Start()
@@ -19,7 +16,6 @@ public class Robot : Agent
         ani = GetComponent<Animator>();
         robot_rig = GetComponent<Rigidbody>();
         ball_rig = GameObject.Find("Soccer_Ball").GetComponent<Rigidbody>();
-        //textMessage = GameObject.Find("訊息").GetComponent<Text>();
     }
     /// <summary>
     /// 每次開始時重新設定人跟球的位置
@@ -58,7 +54,6 @@ public class Robot : Agent
         control.x = vectorAction[0];
         control.z = vectorAction[1];
         robot_rig.AddForce(control * speed);
-        ani.SetBool("跑步開關", robot_rig.velocity.magnitude > 0.1f);
 
 
         if (ball.conplate)
